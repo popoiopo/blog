@@ -7,7 +7,7 @@ draft = false
 #+BEGIN_EXPORT html
 <h1 style="text-align: center;">Welcome to my website!</h1>
 #+END_EXPORT
-My name is Bas Châtel, and you must be here to check out my personal site/blog. This site is made mainly to tell you about my exploits in science, the wonderful world of emacs, and some cool knick-knacks that I pick up along the way. For example, this website is made by a combination of org-mode packages, javascript and some bootstrap HTML. Each page that you see is mainly just org-mode markup! Also there will be some tutorials in python, JavaScript, etc. So take a look around, and enjoy!
+My name is Bas Châtel, and you must be here to check out my personal site/blog. This site is made mainly to tell you about my exploits in science, the wonderful world of emacs, and some cool knick-knacks that I pick up along the way. For example, this website is made by a combination of org-mode packages, javascript and some bootstrap HTML. Each page that you see is mainly just org-mode markup! Also there will be some tutorials in python, JavaScript, etc. It is still very much under construction as you can see but take a look around, and enjoy!
 
 {{< figure src="./images/Screenshot_20210112-215010_Autodesk SketchBook.jpg" alt="" height="400px" style="text-align:center;">}}
 #+BEGIN_EXPORT html

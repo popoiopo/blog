@@ -1,16 +1,19 @@
 +++
-categories = ["emacs"]
-tags = ["org"]
-title = "Plopalopa"
+categories = ["emacs", "blogging"]
+tags = ["org", "hugo", "testing"]
+title = "Testing hugo and org"
 date = "2021-02-03T17:31:23+01:00"
 draft = false
 +++
-* Checkcheck
+* Testing different things in hugo from org
 
-hallo smatjes
+This blogpost is mainly used to show, and template, most usefull components in a regular blog. This is mostly for myself to reuse bits and pieces, but maybe other people can learn from it too. To view the raw .org file, please go [[https://raw.githubusercontent.com/popoiopo/blog/main/content/post/test-easy-hugo.org][here]].
 
-This seems to at least do something. Lets see what happens
+** Making tables
 
+#+NAME: tab:testTable
+#+CAPTION: Caption for a table.
+|------+----+---+-------+------|
 | This | is | a | table | popo |
 |------+----+---+-------+------|
 |    1 |  6 | 7 |   0.5 | 14.5 |
@@ -20,6 +23,69 @@ This seems to at least do something. Lets see what happens
 #+TBLFM: $4=($1/2)
 #+TBLFM: $5=vsum($1..$4)
 
+** Math check
+We can have inline math $\sigma \cdot \Delta = \sum_{i=0}^{\inf}$ so we can explain small things within texts.
+
 $$A^T=a^{a^{a^{a}}}$$
 
-zien we inderdaad realtime dingen gebeuren?
+#+BEGIN_SRC latex
+\begin{bmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{bmatrix}
+#+END_SRC
+
+\begin{bmatrix}
+1 & 2 & 3\\
+a & b & c
+\end{bmatrix}
+
+** Figures testing
+{{< figure src="https://popoiopo.github.io/images/Screenshot_20210112-215010_Autodesk SketchBook.jpg" width="50%" alt="" >}}
+
+#+BEGIN_EXPORT html
+<div class="mx-auto" style="width: 100%; margin-bottom:100px;">
+  <div style="width:50%;float: left">
+    Side by side image and text. Nullam eu ante vel est convallis dignissim.  Fusce suscipit, wisi nec facilisis facilisis, est dui fermentum leo, quis tempor ligula erat quis odio.  Nunc porta vulputate tellus.  Nunc rutrum turpis sed pede.  Sed bibendum.  Aliquam posuere.  Nunc aliquet, augue nec adipiscing interdum, lacus tellus malesuada massa, quis varius mi purus non odio.
+  </div>
+  <div style="width:50%;float:left">
+    {{< figure src="https://popoiopo.github.io/images/Screenshot_20210112-215010_Autodesk SketchBook.jpg" width="100%" alt="" >}}
+  </div>
+</div>
+#+END_EXPORT
+** Code export
+#+BEGIN_SRC python
+  import matplotlib.pyplot as plt
+  import numpy as np
+
+  def sigmoid(x, height=1, base=0, shift=0.5, slope=20):
+      """Sigmoidal function that, using default values is bounded between [0,1] for both axes.
+
+      Args:
+	  x (float): Input to function
+	  height (float, optional): Sets the maximum of the sigmoid. Defaults to 1.
+	  base (float, optional): Sets minimum of sigmoid. Defaults to 0.
+	  shift (float, optional): Sets halfway-point of sigmoid. Defaults to 0.5.
+	  slope (float, optional): Float parameter to set the slope. Defaults to 20.
+
+      Returns:
+	  (float): Returns the Y value associated with inputs
+      """
+      return base + (height*(1/(1+np.exp((-x + shift)*slope))))
+
+  x = np.linspace(0,1,100)
+  y = [sigmoid(i) for i in x]
+
+  plt.plot(x,y)
+#+END_SRC
+
+#+BEGIN_SRC jupyter
+  a = 5
+  b = 100
+  a * b
+#+END_SRC
+
+#+RESULTS:
+: 500
+**** TODO Need to fix syntax highlighting and figure export
+**** TODO Need to fix TODO keyword coloring

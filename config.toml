@@ -1056,9 +1056,9 @@ uglyURLs = false
     ######################################
     # Post Copyright
 
-    enablePostCopyright = true
+    enablePostCopyright = false
 
-    displayPostCopyright = true
+    displayPostCopyright = false
     # Note: *global settings*
     #       `displayCopyright` in post’s Front Matter
     #       has a higher priority than here
@@ -1110,7 +1110,7 @@ uglyURLs = false
     ######################################
     # Post Share
 
-    enablePostShare = true
+    enablePostShare = false
 
     displayPostShare = true
     # Note: *global settings*
@@ -1123,12 +1123,12 @@ uglyURLs = false
     shareOnFacebook = true
     shareOnLinkedIn = true
     shareOnTelegram = true
-    shareOnWeibo = true
-    shareOnDouban = true
-    shareOnQQ = true
-    shareOnQzone = true
+    shareOnWeibo = false
+    shareOnDouban = false
+    shareOnQQ = false
+    shareOnQzone = false
 
-    shareViaQRCode = true
+    shareViaQRCode = false
 
 
     ######################################
