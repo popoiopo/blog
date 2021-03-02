@@ -1,0 +1,387 @@
+#+OPTIONS: reveal_title_slide:"<h3>%t</h3><h4>%s</h4><div><small>%d</small><br><small><small>%a&nbsp;:&nbsp;%e</small></small></div>"
+#+OPTIONS: reveal_math:t
+
+#+OPTIONS: center:t, progress:t, history:nil, control:t
+#+OPTIONS: rolling_links:t, keyboard:t, overview:t num:nil
+#+OPTIONS: toc:1  slide_number:c/t
+#+OPTIONS: width:800, height:600
+
+#+MACRO: color @@html:<font color=""></font>@@
+
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Course slides">
+#+REVEAL_POSTAMBLE: <p> Created by Bas Chatel</p>
+#+REVEAL_PLUGINS: (markdown notes highlight zoom)
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_MARGIN: 0.2
+#+EXCLUDE_TAGS: noexport
+#+REVEAL_EXTRA_CSS: ./local.css
+# #+REVEAL_HLEVEL: 1
+
+#+Title: Refining the Causal Loop Diagram
+#+Subtitle: A tutorial paper for maximizing the contribution of domain expertise in computational system dynamics modelling
+
+
+# default, cube, page, concave, zoom, linear, fade, none
+#+REVEAL_TRANS: concave
+# default, beige, sky, night, serif, simple, moon
+#+REVEAL_THEME: simple
+
+#+Author: Loes Crielaard$^1$, Jeroen Uleman$^1$, Bas Chatel$^1$, Peter Sloot, Rick Quax
+#+Email: 1 Contributed equally
+#+DATE: bas.chatel@radboudumc.nl
+
+# Templating
+#
+# ### FRAGMENT CHANGE ###
+#
+# #+ATTR_REVEAL: :frag grow/shrink/roll-in/fade-out/highlight-red
+#
+# ### BIG PICTURE ###
+#
+# #:PROPERTIES:
+# :reveal_background: img/test.jpg
+# :reveal_background_size: 600px
+# :reveal_background_trans: slide
+# :END:
+# #+BEGIN_NOTES
+# Your note
+# #+END_NOTES
+#
+# ### CHANGE BACKGROUND ###
+#
+# :PROPERTIES:
+# :reveal_background: #123456
+# :END:
+#
+# ### 2-COLUMN SLIDE ###
+#
+# #+REVEAL_HTML: <div style="width:50%;float:left">
+# #+REVEAL_HTML:
+# #+REVEAL_HTML: <img src="images/corp.jpg" style="width: 100%">
+# #+REVEAL_HTML: </div>
+# #+REVEAL_HTML: <div style="width:50%;float: left">
+# #+REVEAL_HTML: <br><br>
+# #+REVEAL_HTML: <h2>&nbsp;&nbsp;Corporation</h2>
+# #+REVEAL_HTML: </div>
+#
+# ### CHANGE COLOR ###
+#
+# {{{color(green,emergentie)}}}
+#
+# ### Highlighted lists per item ###
+#
+# ### Make list start from different number ###
+#
+# [@4]
+#
+# CSS PART
+#
+# .reveal .slides section .fragment.appear {
+#     opacity: 1;
+#     visibility: visible;
+# }
+# .reveal .slides section .fragment.appear.visible,
+# .reveal .slides section .fragment.visible:not(.current-fragment) {
+#     color: grey;
+# }
+# .reveal .slides section .fragment.appear,
+# .reveal .slides section .fragment.current-fragment {
+#     color: #ffa200;
+# }
+#
+# HTML in <li>
+# First element
+#
+# class="fragment" data-fragment-index="0"
+#
+# THEN
+#
+# class="fragment"
+#
+# OF ALS JE ALLES IN ORG DOEN CSS PART IN EXTERNE FILE EN VOLGENDE BOVEN LIST
+# ITEMS ZETTEN
+#
+# #+ATTR_REVEAL: :frag (t fade-in fade-in)
+#+REVEAL_PREAMBLE: <div style="margin-top:10px; margin-left:10px;margin-bottom:-50px;"><img src="images/methodsPaper/logos.png" alt="" style="height:50px;"></div>
+
+# ########################
+# ###### Complexity ######
+# ########################
+
+* Complexity
+** What is it?
+#+ATTR_REVEAL: :frag (fade-in)
+- Studies “the way in which large groups of individual components behave collectively by adapting to each other and the environment they create themselves”
+- Aims to model the spatio-temporal dynamics of a system to explore its inherent patterns
+- Necessary in order to explore, interpret, and manipulate dynamics of a system /in silico/
+** Fields of application
+#+REVEAL_HTML: <div style="width:50%;float:left">
+- Mental health
+- Public health
+- Planetary health
+- Social dynamics
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: <div style="width:50%;float: left">
+- Depression
+- Obesity epidemic
+- Climate change
+- Immune system
+#+REVEAL_HTML: </div>
+** Problems in biopsychosocial domains
+- Infeasibility of experimental research
+- Difficulty to obtain rich data
+- Rapid changes in underlying system
+- Relevant variables on many spatial and temporal scales
+- Unclear system boundaries
+** The gap
+#+ATTR_REVEAL: :frag (fade-in)
+- Need to identify methods to build computational models from conceptual models
+  - Using sparse available data
+- Documented protocols lack steps to allow for conversion to a validated, executable computational model
+** Our approach
+#+ATTR_REVEAL: :frag (fade-in)
+- Optimize for capturing expert knowledge
+- Focus on transition Causal Loop Diagrams (CLD) $\rightarrow$ System Dynamics Model (SDM)
+- The Annotated Causal Loop Diagram (/aCLD/)
+
+# #####################################
+# ###### Modeling and Simulation ######
+# #####################################
+
+* Modeling & Simulation Cycle
+** The scientific cycle
+#+attr_html: :width 700px
+[[file:images/methodsPaper/image5.png]]
+** A CLD about the paper about CLDs
+[[file:images/methodsPaper/image15.png]]
+
+# ##############################
+# ###### Domain Knowledge ######
+# ##############################
+
+* Domain Knowledge
+[[file:images/methodsPaper/DomainKnowledge.png]]
+** Expert knowledge
+Expert pool needs to have two things:
+- Diversity
+- Authorship and ownership of result
+** Research question and context validity
+#+ATTR_REVEAL: :frag (fade-in)
+- Question needs to be well defined
+- It exists within a specific context
+  - The extent to which the aCLD and the SDM capture the phenomenon they set out to
+  - Needs to be formulated before modeling
+- Research question and context are not set in stone $\rightarrow$ Iterative process
+** Rules of the game
+#+ATTR_REVEAL: :frag (fade-in)
+- A model should never be used outside its pre-defined context
+  - Spatial scale
+  - Temporal scale
+- All steps in process needs to be relative to specified context
+
+# ########################
+# ###### CONCEPTUAL ######
+# ########################
+
+* Conceptual Model
+[[file:images/methodsPaper/ConceptualModel.png]]
+** Scale seperation map
+#+attr_html: :width 600px
+[[file:images/methodsPaper/image11.jpg]]
+#+BEGIN_NOTES
+1. Smaller temporal scales average out
+2. Larger temporal scales are kept constant
+3. Define your variables unambiguously
+4. Define variables neutrally
+#+END_NOTES
+** Current CLD's contain
+#+ATTR_REVEAL: :frag (fade-in)
+- Variables
+- Causal links (arrows)
+- Identified feedback loops
+** Missing ingredients
+- Uncertainty
+- Recording consensus
+- Known-to-be-absent causal links
+- Intermediary variables
+- Functional forms
+- Interaction terms
+- High quality literature evidence
+
+** Uncertainty
+#+ATTR_REVEAL: :frag (fade-in)
+- *AKA*: The stuff that we're not certain about
+  - Topology
+  - Equations (functional form)
+  - Measuring methods
+  - Etc.,
+- *If ignored*:
+  - Creates bias
+  - Overstates predictive power
+  - Possibly leading to wrong conclusions
+** Recording Consensus
+#+ATTR_REVEAL: :frag (fade-in)
+- Could be a voting count
+- Transparency about uncertainty
+  - More consensus $\rightarrow$ less structural uncertainty and vice versa
+- Uncertain causal links $\rightarrow$ multiple possible models
+** Known-to-be-absent Causal Links
+#+ATTR_REVEAL: :frag (fade-in)
+- Known to not be a direct cause- and- effect
+- Recording reduces underestimation of structural uncertainty
+  - You know what there is
+  - You know what you don't know
+  - *You know what there isn't*
+  - You know?
+** Intermediary Variables
+#+REVEAL_HTML: <div style="width:50%;float:left">
+#+REVEAL_HTML: <img src="images/methodsPaper/image14.png" style="width: 100%">
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: <div style="width:50%;float: left">
+- Add only direct causal links
+- *If unrecorded:* assume intermediary variables to be independent to rest of CLD
+- Sanity check
+#+REVEAL_HTML: </div>
+** Functional Forms
+#+ATTR_REVEAL: :frag (fade-in)
+- Mathematical function that describes causal relationship
+- Refines initial polarity used
+- Can be chosen by experts from selection possible candidates
+- Cross-reference with literature
+- Any information can help
+  - Monotonically increasing
+  - Eventually converging to zero
+** Interaction Terms
+#+ATTR_REVEAL: :frag (fade-in)
+- Many-to-one causal link
+  - Multiple variables bring about a change in another variable
+- Interaction term
+  - Logical AND gate
+  - Logical OR gate
+** High Quality Literature Evidence
+#+ATTR_REVEAL: :frag (fade-in)
+- Literature should be explicitly specified for each variable and causal link
+- Allows iterative development
+- Provides concrete basis for discussion among experts
+  - Can be deciding factor according to evidence quality
+
+** Annotated CLD
+#+attr_html: :width 700px
+[[file:images/methodsPaper/image10.png]]
+** aCLD
+#+ATTR_REVEAL: :frag (fade-in)
+- Reflection of the knowledge and assumptions held by a person or group
+  - Shared mental model
+- Cross-discipline
+  - Reflected in diverse expert pool
+** Labelled aCLD
+[[file:images/methodsPaper/image4.png]]
+
+# #################################
+# ###### Computational Model ######
+# #################################
+
+* Computational Model
+[[file:images/methodsPaper/ComputationalModel.png]]
+** SDM
+- Interlocking set of (difference) equations
+  - Measured data
+  - Experiential data
+- 2-way communication between mental models & simulation models
+- Modular architecture $\rightarrow$ incorporate other models
+  - Multiscale model
+** Equations
+*Potato equations*
+\begin{align}
+p_{t+1} &= (1.5p)l\ + && \text{Influence of light \rightarrow potato growth} \\
+        &\ \ \ \ \ (s^{a_1})p\ + && \text{Influence soil nutrients \rightarrow potato growth} \\
+        &-(a_2 f_1(p))\ + && \text{Competition with themselves} \\
+        &-(2w)p && \text{Potato loss due to worms}
+\end{align}
+** Equations
+*Soil nutrients equations*
+\begin{align}
+s_{t+1} &= (0.3w)\ + && \text{Worm \rightarrow feces to soil nutrients} \\
+        &-(p^{a_1})s\ && \text{Soil nutrient consumption from potatoes}
+\end{align}
+** Equations
+*Worm population equations*
+\begin{align}
+w_{t+1} &= (1.2p)\ + && \text{Migration caused by potatoes} \\
+        &\ \ \ \ \ (0.1w)\ + && \text{Worm birth} \\
+        & -(0.1w)\ + && \text{Worm death} \\
+        & -(2s)(1w)\ + && \text{Toxic effect nutrients} \\
+        & (-|+)a_3f_2(w,\text{light}) && \text{Attraction to light warmth}
+\end{align}
+** Joint space
+#+ATTR_REVEAL: :frag (fade-in)
+- Model space
+  - Equations themselves
+- Parameter space
+  - Parameters accompanying those equations
+- Dimensions to estimate
+  - Model space + Parameter space
+
+** Estimation
+#+ATTR_REVEAL: :frag (fade-in)
+- Optimization algorithms
+  - Iteratively converge towards a good solution
+- Markov chain Monte Carlo methods
+  - Calculate multi-dimensional integrals
+  - Record states from a markov chain
+  - Sample from probability distribution
+
+** Maximum a Posteriori
+#+ATTR_REVEAL: :frag (fade-in)
+- Most plausible values that parameters can take
+- Usually only descriptive used
+- Forgets about the distribution itself though..
+
+** Posterior distribution
+[[file:images/methodsPaper/image7.png]]
+
+# #########################
+# ###### Application ######
+# #########################
+
+* Application
+[[file:images/methodsPaper/Application.png]]
+
+** It's all about confidence
+- To increase confidence is to reduce uncertainty
+- Confidence in model predictions
+  - Otherwise, what are we doing?
+
+** Parameter Uncertainty
+[[file:images/methodsPaper/image7.png]]
+
+** Sensitivity Analysis (SA)
+- Which uncertainties in model account for most uncertainty in model prediction
+- Global Sensitivity Analysis
+  - Prefered over local SA
+  - Interactions between parameters
+  - Can be used to reduce dimensionality
+
+** Validation of the model
+- Structure-oriented behavior models
+  #+ATTR_REVEAL: :frag (fade-in)
+  - Validation statements
+  - Check if SDM exhibits behavior encoded in these statements
+  - Based on different dataset than used to construct /aCLD/
+  - Spanning multiple causal links
+
+** Validation of the model
+- Behavior pattern tests
+  #+ATTR_REVEAL: :frag (fade-in)
+  - Check if SDM exhibits behavior encoded in data
+  - Ideally longitudinal data
+  - Validation using data not used previously
+  - Sadly, skipped a lot
+
+** All the confidence in the world
+#+ATTR_REVEAL: :frag (fade-in)
+- Testing "What if" scenarios
+- Test effects of hypothetical interventions
+- Learn all the things!

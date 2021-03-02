@@ -1,6 +1,6 @@
 +++
-categories = ["emacs", "blogging"]
-tags = ["org", "hugo", "testing"]
+categories = ["Emacs", "Blogging"]
+tags = ["Org", "Hugo", "Testing"]
 title = "Testing hugo and org"
 date = "2021-02-03T17:31:23+01:00"
 draft = false
@@ -14,7 +14,7 @@ This blogpost is mainly used to show, and template, most usefull components in a
 #+NAME: tab:testTable
 #+CAPTION: Caption for a table.
 |------+----+---+-------+------|
-| This | is | a | table | popo |
+| This | is | a | table |  sum |
 |------+----+---+-------+------|
 |    1 |  6 | 7 |   0.5 | 14.5 |
 |    9 |  8 | 6 |   4.5 | 27.5 |
@@ -54,38 +54,72 @@ a & b & c
 </div>
 #+END_EXPORT
 ** Code export
-#+BEGIN_SRC python
+:PROPERTIES:
+:ID:       53F0718A-545C-4CC6-B8F1-035350306B5B
+:END:
+
+Good resource for org-babel exporting can be found [[http://kotfic.github.io/org-mode-export-of-matplotlib-images-etc.html][here]].
+
+#+NAME: plt-preamble
+#+BEGIN_SRC python :results file :exports none
+  import matplotlib
+  matplotlib.use('Agg')
   import matplotlib.pyplot as plt
   import numpy as np
+#+END_SRC
 
+#+NAME: plt-postamble
+#+BEGIN_SRC python :results file :exports none
+  # "path" variable must be set by block that
+  # expands this org source code block
+  plt.savefig(path)
+  if test == "True":
+      return path
+  else:
+      return "https://popoiopo.github.io/images/" + path.split("/")[-1]
+#+END_SRC
+
+#+HEADER: :var path="../../static/images/test-easy-hugo-sigmoid.png", test="False"
+#+NAME: org-level-hist
+#+BEGIN_SRC python :exports both :noweb strip-export :results file
+  <<plt-preamble>>
   def sigmoid(x, height=1, base=0, shift=0.5, slope=20):
       """Sigmoidal function that, using default values is bounded between [0,1] for both axes.
 
-      Args:
-	  x (float): Input to function
-	  height (float, optional): Sets the maximum of the sigmoid. Defaults to 1.
-	  base (float, optional): Sets minimum of sigmoid. Defaults to 0.
-	  shift (float, optional): Sets halfway-point of sigmoid. Defaults to 0.5.
-	  slope (float, optional): Float parameter to set the slope. Defaults to 20.
+	Args:
+	    x (float): Input to function
+	    height (float, optional): Sets the maximum of the sigmoid. Defaults to 1.
+	    base (float, optional): Sets minimum of sigmoid. Defaults to 0.
+	    shift (float, optional): Sets halfway-point of sigmoid. Defaults to 0.5.
+	    slope (float, optional): Float parameter to set the slope. Defaults to 20.
 
-      Returns:
-	  (float): Returns the Y value associated with inputs
-      """
+	Returns:
+	    (float): Returns the Y value associated with inputs
+	"""
       return base + (height*(1/(1+np.exp((-x + shift)*slope))))
 
   x = np.linspace(0,1,100)
   y = [sigmoid(i) for i in x]
 
   plt.plot(x,y)
+  <<plt-postamble>>
 #+END_SRC
 
-#+BEGIN_SRC jupyter
+#+RESULTS: org-level-hist
+[[file:https://popoiopo.github.io/images/test-easy-hugo-sigmoid.png]]
+
+
+#+BEGIN_SRC python
+  print("hallo")
   a = 5
   b = 100
   a * b
 #+END_SRC
 
 #+RESULTS:
+:RESULTS:
+: hallo
 : 500
-**** TODO Need to fix syntax highlighting and figure export
+:END:
+
 **** TODO Need to fix TODO keyword coloring

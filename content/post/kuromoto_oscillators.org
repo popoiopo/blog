@@ -1,0 +1,28 @@
++++
+categories = ["Modelling"]
+tags = ["Complexity", "Sociophysics"]
+title = "Kuromoto_oscillators"
+date = "2021-02-17T15:18:31+01:00"
+draft = true
++++
+* Hallo kuromoto!
+hashfiaushfi
+
+[
+    {
+        "id": "c2",
+        "naam": "Koen"
+    },
+    {
+        "id": "extra2",
+        "naam": "Peter"
+    },
+    {
+        "id": "c3",
+        "naam": "Koeeeen"
+    },
+    {
+        "id": "extra3",
+        "naam": "Petewwwwwr"
+    }
+]

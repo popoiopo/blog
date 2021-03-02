@@ -1,0 +1,43 @@
++++
+categories = ["ComputerScience"]
+tags = ["Git", "VersionControl"]
+title = "Lets talk about git"
+date = "2021-02-20T10:07:03+01:00"
+draft = false
++++
+* Why am I writing this?
+As I am reading [[https://git-scm.com/book/en/v2][this book]] I want to create a place where I can place my notes in a way that makes sense, and that is easily used for reference later on. After several years of doing projects and using the superficial Git commands, it is time to delve a little deeper and actually understand what I'm doing. Instead of merely repeating git commands, I find on stack overflow whenever something needs to be fixed. As I do see the value of using branches, merging files, etc., they have always scared me somehow. So let's try to overcome this by reading the book and making a nice post in the meantime!
+
+* What is Version Control?
+** Controlling them versions
+We've all been there in the good old days. Writing a report in word, saving it with a name like =final report.docx=. But after some feedback from the teacher, you need to make some changes. However, just working in your old file just makes you feel antsy; you've worked really hard on those things you wrote! So you make the suggested changes and call the new file =final final report.docx=. Then you ask a friend to look at your work and give some feedback which then culminates in a third =final report3.docx=. This is when you look at your folder and realize the hell you're creating for yourself! *And that, my friends, is where version control comes in*.
+
+{{< figure src="https://popoiopo.github.io/images/file_hell.png" alt="" >}}
+
+Version control is a way to keep track of your project changes (usually a folder that has all the important files relating to a project). These changes can entail anything in any file within that project, from changing images if you are a graphic designer to code file changes if you are building an application. The reason you'd want this is that it gives you the ability to revert to earlier states in your project. You know, before you made that horrible mistake that messed everything up.
+
+So one way that version control can handle keeping track of these ghosts of the past is by utilizing a database that keeps track of all changes. So each file is essentially linked to its former versions in said database. More specifically, it keeps track of only the differences between files (not necessarily each whole file). Recreating a file becomes just a function of adding up all changes up to the version you're interested in. This method is called delta-based version control. Delta is usually used to indicate differences, so the name makes sense.
+
+Another way, the way that is used by Git, is using a stream of snapshots. A snapshot can be seen as a picture you take of what your file looks like at that moment. When you say to Git that you want to save your current state, it saves a snapshot of every file with reference to that snapshot. To not take too much space, when a file is unchanged between the current and last commit, Git will just save that reference to the snapshot of the last time that the file was changed. It is like a string of beads onto which a new bead is added on the string on every text change. If text remains unchanged during a commit, there will be an empty space until the next bead is added.
+
+** Collaboration
+Collaborating in a project with multiple people brings about its own special set of problems. First of all, the projects need to be accessible to all collaborators. This can be done by one centralized server to log in, have all versioned files in one place, and make changes. However, having a single place to which you store your files is never a good idea. What is the server, which is just some computer elsewhere that you can log in to, crashes? What if there is a power outage in the server location? You'd be unable to work for that time.
+
+That is why distributed version control systems such as Git exist. Things are not being kept in a single location but rather on all locations that work in the project. With this, I mean that every collaborator keeps their own mirror of the project, including its full history of all files. So when a new person wants to join the collaboration, they just have to pull the latest version from the server, and off they go! Therefore, if any of the machines blow up (to be a bit dramatic), the other computers will still have their version of the entire project.
+
+#+NAME: fig:timeline_DVCS
+#+CAPTION: Figure of a distributed version control system (the figure is adopted from the book$^1$).
+{{< figure src="https://popoiopo.github.io/images/stolen_image_git.png" alt="" >}}
+
+Suppose one person makes changes to their own version of the project. In that case, they can push that version to the server, making it accessible to all collaborators. Those other people can then pull the most recent version of the project as a whole. Everyone has the entire history of the project right there on the local disk, so everyone can work with their version while still keeping track of who made what changes in which file.
+
+This way of working locally allows for browsing your project's history without the internet, as it can all be used locally. So if you are without internet and still want to work, you can! You can even look back at older versions of a file, make changes to a new file, commit those changes, and when you have internet again, push those changes to the server and therefore backing it up nicely.
+
+This all works a bit more intricate than I described here, but we got the basic intuition. More problems need to be addressed, and we'll get to those in another post. But the foundation of understanding version control has been laid here.
+
+* References
+
+1. Chacon, S., & Straub, B., Pro git (2014): Springer Nature.
+
+# bibliographystyle:unsrtnat
+# bibliography:~/Dropbox/roam_notes/papers_and_articles/references.bib
