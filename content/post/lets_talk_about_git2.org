@@ -1,0 +1,65 @@
++++
+categories = ["ComputerScience"]
+tags = ["Git", "VersionControl"]
+title = "Lets talk about git (Part 2)"
+date = "2021-03-07T13:35:37+01:00"
+draft = false
++++
+* Recap previous
+In the previous post, we talked about what version control is, how it stores its versions of files and how a centralized vs distributed version control works. We mostly talked about the intuition of why we would want to use version control and how it works. Furthermore, we had a glimpse of the problems that can arise once collaboration comes into play. If you haven't read it, [[https://www.baschatel.nl/post/lets_talk_about_git/][here it is.]]
+
+* This post
+In this post, we will elaborate further on the workings of Git, and we will venture into some of the command line functions. We will _not_ discuss how to install Git, nor will we discuss where the command line is in your system and how that works. So some prior knowledge is assumed.
+
+* The three states
+
+A file in a Git repository can be in three different main stages; modified, staged, and committed.
+
+- Modified :: You changed the file but have not committed the changes to your database.
+- Staged :: You marked the modified file in the current version to go into your next commit.
+- Committed :: The data is stored in the database!
+
+These three stages lead to the main sections of a Git project; the working tree, the staging area, and the git directory.
+
+- Working tree :: This is a single checkout of one version of the project [fn:wt]. The files in these versions are pulled out of the compressed database in the Git directory and placed on disk for you to use or modify.
+- Staging area :: The staging area, aka "index", is a file in your Git directory, storing information about what will be in your next commit.
+- Git directory :: This is the place where Git stores the metadata and database for your project. Needless to say, this is the backbone of the Git experience, and it is what is copied when you /clone/ a repository from another computer.
+
+[fn:wt] You can have multiple working versions of the project next to each other. For example, you can have a production version and a version in which you add functionality. Then, if the new functionality is done, you could merge the two versions.
+
+These three phases lend themselves to a workflow in the same order. (1) You make changes in a file (file is *modified*). (2) After you're happy with your changes, you can stage those changes that you want to be part of your next committed. Only the files you added are brought to the staging area and can then be considered *staged*. (3) You do a commit, taking those /staged/ files in the staging area and storing that snapshot permanently to your Git directory.
+
+* Creating a git directory
+Say you have a project that you work on and want to have version controlled. This project lives in some folder that you have somewhere (I usually have my git directories stored in a directory called =github= in the root, or home, directory). But people also keep them in the well-known =Documents= folder. Note that I use folder and directory interchangeably[fn:1].
+
+Let's say you have a fantastic project that lives in a directory that we'll call =path/to/project= which you want to version control. You first need to go to your terminal, go to that directory, and initialize it as a git repository.
+
+#+begin_src bash
+  cd path/to/project
+  git init
+#+end_src
+
+This will create a new subdirectory called =.git= that contains all the repository files. At this point, it is just a bare skeleton that has no files tracked. To actually start version-controlling an existing file, you want to add those files that you want tracked. So let's say this is your project directory:
+
+#+begin_src
+- Project
+|- Readme.org
+|- main.py
+|- images
+||- img1.png
+#+end_src
+
+We have a =Readme.org= that contains information about the project, a =main.py=, which is just the main python file, and an =images= directory that contains an image. To add the =Readme.org= to the Git tracking, we simply do the following:
+
+#+begin_src bash
+  git add Readme.org
+  git commit -m "Adding readme to the project tracking"
+#+end_src
+
+~Git add~ adds the =Readme.org= file to the staging area to be tracked by Git. Another way to add files is by using wildcards. Say you want to add all python files (ending with =.py=), then you could do =git add *.py= in which the star means that it doesn't matter what comes before the =.py= as long it ends with it. ~Git commit~ commits the tracked file to the git directory, and the current version is saved! Now, should anything go wrong, we can always return to this version! The ~-m~ flag just means that we add a message to the commit. This usually is just a short description of the commit's changes, so you can easily see what you did.
+
+Here you can already see the lifecycle of the status of your files. First they are untracked and Git doesn't know about those files. Then after you track them, Git knows about them and they can be in the three stages.
+
+{{< figure src="https://popoiopo.github.io/images/lifecycle.jpg" alt="" >}}
+
+[fn:1] Folders and directories are used interchangeably as they usually refer to the same thing. If we'd really want to nitpick, there is a difference. In a GUI (graphical user interface), such as Windows, a folder doesn't necessarily map to a specific hard drive location, a construct meant to mimic a real folder called a shell namespace. For example, a folder you've created to hold pictures on your desktop. While with a command-line interface (e.g., MS-DOS or Linux), you would say directory instead of folder as a directory is mapped to a physical location on a storage medium.
