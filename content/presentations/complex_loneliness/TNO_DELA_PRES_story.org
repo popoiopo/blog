@@ -1,0 +1,121 @@
+# ##################
+# INTRODUCTION
+# ##################
+
+Het is mijn taak om tijdens mijn PhD eenzaamheid door de ogen van de complexiteits- wetenschap te bekijken en ik wil jullie graag een overzicht geven voor wat dat dan zoal betekent.
+
+=verder in pres=
+
+Eerst wil ik jullie even iets vertellen over wat complexiteits- wetenschap nou eigenlijk is en hoe het denken over causaliteit en causale structuren ons kan helpen met een probleem als eenzaamheid.
+Dan wil ik het even hebben over de bronnen van informatie en waarom ze allemaal van belang zijn.
+En als laatste ga ik verder met de methode die ik aan hou om een causaal netwerk te maken, en hoe ik dat wil gebruiken als blauwdruk om computer modellen te maken. Hier kijken we ook even naar hoe de drie soorten informatie ons helpen.
+
+=verder in pres=
+
+# ##################
+# Complexity
+# ##################
+
+Dus eerst even over complexiteit.
+
+# Wat bedoelen we met complexiteit?
+
+=verder in pres=
+
+Dus wat bedoel ik met complexiteits- wetenschap?
+
+=verder in pres=
+
+Allereerst bestudeert het de manier waarop grote groepen individuele componenten zich collectief gedragen door zich aan te passen aan elkaar en de omgeving die ze zelf creëren. Dus het kijkt naar de verschillende factoren, zoals de risico factoren die Geeske eerder al genoemd heeft, en hoe deze samen werken om eenzaamheid tot uiting te krijgen. Dit brengt mij dan ook naar het volgende punt.
+
+=verder in pres=
+
+We streven naar het modelleren van de spatio-temporele dynamiek, dus de veranderingen in tijd en ruimte, in een systeem als eenzaamheid om zijn inherente patronen te onderzoeken. Dus hoe kan het zijn dat de samenwerking van die factoren zich uiteindelijk uiten in eenzaamheid? Hoe spelen de verschillende factoren met elkaar?
+
+=verder in pres=
+
+Aangezien onderzoek erg tijdsintensief en duur is, kunnen we deze lasten drukken door simulaties te gebruiken. Deze simulaties kunnen gebruikt worden om "wat als" vragen te stellen waarmee we veranderingen in het systeem aanbrengen. Wat als we bijvoorbeeld mensen het gevoel van controle over hun eigen leven kunnen vergroten, zou eenzaamheid daar genoeg mee verminderd zijn of is er nog iets anders nodig? Of welke factoren versterken elkaar en kunnen daarmee beter als pakket getarget worden?
+
+=verder in pres=
+
+# Geheel is meer dan de som der delen
+
+Samengevat kunnen we zeggen dat het geheel dus groter is dan de som der delen. Zoals het laten zien wordt in het plaatje, door alleen te kijken naar de kleinste delen, is het moeilijk om te zien waar je nou echt naar kijkt.
+
+# Informatie zit niet alleen in factoren, maar ook in relaties
+
+=verder in pres=
+
+Dit geeft illustreert dus ook dat de informatie niet alleen in de onderdelen zelf zit, maar ook in de relaties, of de samenwerking, tussen deze onderdelen. Maar hoe breng je nou het hele beeld van eenzaamheid in hetzelfde plaatje? Daar hebben we een hoop informatie voor nodig.
+
+# ##################
+# Data
+# ##################
+
+=verder in pres=
+
+We beginnen dus met verschillende bronnen aan informatie te verzamelen.
+
+# Literatuur
+
+=verder in pres=
+
+De eerste bron van informatie is de literatuur. Deze is toereikend, maar ongestructureerd, dus het is vaak zoeken naar de juiste informatie. Verder is het soms niet toereikend omdat er nog geen studies zijn die causaliteit kunnen suggereren. Dit is omdat het studiedesign dat daarvoor nodig is vaak erg langdurig en duur kan zijn.
+
+# Experts
+
+=verder in pres=
+
+De tweede bron van informatie zijn de domein experts. Zij beschikken over een hele hoop kennis en intuïtie over bijvoorbeeld de belangrijkste factoren, de relaties tussen factoren en hebben soms zelfs een idee over hoe die relaties er functioneel uit zien, bijvoorbeeld of een verandering in factor A een lineaire reactie in factor B geeft, of dat het wellicht een exponentiële relatie is.
+
+# Data
+
+=verder in pres=
+
+De derde bron van informatie is de data. Data heeft een hele hoop informatie, maar brengt niet direct kennis en conclusies met zich mee.
+=verder in pres=
+Het moet bijvoorbeeld goed gestructureerd zijn,
+=verder in pres=
+we moeten denken over missende waardes, en wat we moeten doen met factoren in je model waar geen data over is,
+=verder in pres=
+en of de tijdsschalen waarmee de data verzameld zijn wel compatibel zijn met de tijdsschalen waarin we willen simuleren.
+
+# Deel van dezelfde puzzel
+=verder in pres=
+Samengevat, alle drie de bronnen zijn onderdeel van dezelfde puzzel die allemaal een ander aspect van het complete plaatje belichten.
+
+# ##################
+# Making of CLD
+# ##################
+=verder in pres=
+Maar hoe gebruik ik die data dan? Hoe wil ik eenzaamheid in kaart brengen?
+
+# Variabele lijst
+=verder in pres=
+De eerste stap is om een lijst variabele te maken die van belang zijn voor eenzaamheid. Dit wordt gedaan door de literatuur in te duiken en met experts in gesprek te gaan door middel van Group Model Building, waar je samen met je experts stap voor stap gaat nadenken over hoe het conceptuele model er uiteindelijk uit moet gaan zien. Dit brengt vak een grote lijst met zich mee, hier zie je bijvoorbeeld de verschillende variabelen die wij gevonden hebben.
+
+# Spatio temporele schaal
+=verder in pres=
+De tweede stap is het opmaken van de spatio temporele schaal. Hier structureren we de variabelen in tijd en ruimte. Zo zie je op de y-as de tijdschaal, en de x-as de risico factoren waar Geeske het eerder over had. Deze organisatie is belangrijk om een tijdsschaal te kiezen om later in te modelleren. Als we bijvoorbeeld de tijdsschaal "jaar" kiezen, dan kunnen de variabelen in de tijdsschaal van een maand gemiddeld worden over een jaar. Aan de andere kant, als we kijken naar variabele die veranderen over 10 jaar, die kunnen dan misschien wel als constante gezien worden. Dit is dus omdat die variabelen niet echt veranderen binnen de simulatie.
+
+# Relaties
+=verder in pres=
+De derde stap gaat over het in kaart brengen van de relaties tussen de verschillende variabelen. Hier zijn wij zelf op het moment nog hard mee bezig, dus ik heb even een voorbeeld van Jeroen Uleman over alzheimer neergezet. Het plaatje illustreert twee punten die ik wil maken. Door de relaties in kaart te brengen en het resulterende netwerk te analyseren kunnen we leren welke variabele centraal zijn in het probleem.
+Het tweede punt wat ik wil maken is dat mensen over het algemeen vrij slecht zijn in het voorspellen van hoe feedback loops, non-lineariteit, en interconnectie effecten op de lange termijn werken.
+
+# Simulaties
+=verder in pres=
+Dit is dan ook de reden waarom simulaties belangrijk zijn. Daarmee komen we aan bij de vierde en voor deze presentatie laatste stap aan.
+
+=verder in pres=
+Bij deze stap zetten we wiskundige formules onder de relaties binnen het systeem om dynamiek over tijd te kunnen berekenen.
+
+=verder in pres=
+Maar om dit goed te kunnen hebben we alle drie de soorten data nodig. We hebben experts en literatuur nodig om te weten welke formules we precies nodig hebben. Of we kunnen data gebruiken om door middel van bijvoorbeeld methodes uit machine learning de formules automatisch te vinden.
+
+=verder in pres=
+Als alle stukjes informatie van de puzzel samen zijn gekomen, en we vertrouwen hebben dat ons model het probleem goed genoeg kan modelleren, dan kunnen we dus kijken of we mogelijke interventies kunnen toetsen vanuit de computer, dus dat we bijvoorbeeld die pakketten van variabelen kunnen targeten waar ik het eerder over had. En zo zijn er meer opties.
+
+# Vragen
+=verder in pres=
+Hiermee zijn we bij het einde van mijn presentatie aangekomen, bedankt voor het luisteren. Zijn er nog vragen?

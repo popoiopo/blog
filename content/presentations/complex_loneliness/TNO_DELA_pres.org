@@ -1,0 +1,176 @@
+#+OPTIONS: reveal_title_slide:"<h3>%t</h3><h4>%s</h4><div><small>%d</small><br><small><small>%a&nbsp;:&nbsp;%e</small></small></div>"
+#+OPTIONS: reveal_math:t
+
+#+OPTIONS: center:t, progress:t, history:nil, control:t
+#+OPTIONS: rolling_links:t, keyboard:t, overview:t num:nil
+#+OPTIONS: toc:1  slide_number:c/t
+#+OPTIONS: email:nil contact:nil
+#+OPTIONS: width:800, height:600
+
+#+MACRO: color @@html:<font color=""></font>@@
+
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Course slides">
+# #+REVEAL_POSTAMBLE: <p> Created by Bas Chatel</p>
+#+OPTIONS:
+#+REVEAL_PLUGINS: (notes markdown zoom)
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_MARGIN: 0.2
+#+EXCLUDE_TAGS: noexport
+#+REVEAL_EXTRA_CSS: ../assets/css/local.css
+# #+REVEAL_HLEVEL: 1
+
+#+Title: Eenzaamheid en Complexiteit
+#+Subtitle: In Vogelvlucht
+
+
+# default, cube, page, concave, zoom, linear, fade, none
+#+REVEAL_TRANS: concave
+# default, beige, sky, night, serif, simple, moon
+#+REVEAL_THEME: simple
+
+#+Author: Bas Chatel
+#+EMAIL: bas.chatel@radboudumc.nl
+
+# Templating
+#
+# ### FRAGMENT CHANGE ###
+#
+# #+ATTR_REVEAL: :frag grow/shrink/roll-in/fade-out/highlight-red
+#
+# ### BIG PICTURE ###
+#
+# #:PROPERTIES:
+# :reveal_background: img/test.jpg
+# :reveal_background_size: 600px
+# :reveal_background_trans: slide
+# :END:
+# #+BEGIN_NOTES
+# Your note
+# #+END_NOTES
+#
+# ### CHANGE BACKGROUND ###
+#
+# :PROPERTIES:
+# :reveal_background: #123456
+# :END:
+#
+# ### 2-COLUMN SLIDE ###
+#
+# #+REVEAL_HTML: <div style="width:50%;float:left">
+# #+REVEAL_HTML:
+# #+REVEAL_HTML: <img src="images/corp.jpg" style="width: 100%">
+# #+REVEAL_HTML: </div>
+# #+REVEAL_HTML: <div style="width:50%;float: left">
+# #+REVEAL_HTML: <br><br>
+# #+REVEAL_HTML: <h2>&nbsp;&nbsp;Corporation</h2>
+# #+REVEAL_HTML: </div>
+#
+# ### CHANGE COLOR ###
+#
+# {{{color(green,emergentie)}}}
+#
+# ### Highlighted lists per item ###
+#
+# ### Make list start from different number ###
+#
+# [@4]
+#
+# CSS PART
+#
+# .reveal .slides section .fragment.appear {
+#     opacity: 1;
+#     visibility: visible;
+# }
+# .reveal .slides section .fragment.appear.visible,
+# .reveal .slides section .fragment.visible:not(.current-fragment) {
+#     color: grey;
+# }
+# .reveal .slides section .fragment.appear,
+# .reveal .slides section .fragment.current-fragment {
+#     color: #ffa200;
+# }
+#
+# HTML in <li>
+# First element
+#
+# class="fragment" data-fragment-index="0"
+#
+# THEN
+#
+# class="fragment"
+#
+# OF ALS JE ALLES IN ORG DOEN CSS PART IN EXTERNE FILE EN VOLGENDE BOVEN LIST
+# ITEMS ZETTEN
+#
+# #+ATTR_REVEAL: :frag (t fade-in fade-in)
+#+REVEAL_PREAMBLE: <div style="margin-top:10px; margin-left:10px;margin-bottom:-50px;"><img src="../assets/logos/logos.png" alt="" style="height:50px;"></div>
+
+* Complexiteit
+** Wat bedoelen we met Complexiteit?
+#+ATTR_REVEAL: :frag (fade-in)
+- Bestudeert 'de manier waarop grote groepen individuele componenten zich collectief gedragen door zich aan te passen aan elkaar en de omgeving die ze zelf creëren'
+- Streeft naar het modelleren van de spatio-temporele dynamiek van een systeem om zijn inherente patronen te onderzoeken
+- Noodzakelijk om de dynamiek van een systeem /in silico/ te onderzoeken, interpreteren en manipuleren
+
+** Geheel is meer dan de som der delen
+#+attr_html: :height 500px
+[[file:~/github/blog/content/presentations/complex_loneliness/images/blind_elephant_complexity.jpeg]]
+
+** Informatie zit niet alleen in factoren, maar vooral ook in de relaties
+[[file:~/github/blog/content/presentations/complex_loneliness/images/cooperation.jpeg]]
+
+* Drie bronnen van informatie
+** Literatuur
+- Toereikend
+- Ongestructureerd
+- Onderzoeken vaak niet toereikend voor deductie van causaliteit (A $\rightarrow$ B)
+** Experts
+- Kennis over belangrijke factoren
+- Kennis over relaties
+- Kennis over onderliggende wiskundige vormen
+** Data
+- Bevat een hoop informatie
+- Maar niet perse kennis/conclusies
+  #+ATTR_REVEAL: :frag (fade-in)
+  - Structuur
+  - Missende waardes/factoren
+  - Verkeerde tijdsschaal
+** Allemaal deel van dezelfde puzzel
+#+attr_html: :width 700px
+[[file:~/github/blog/content/presentations/complex_loneliness/images/missing_piece.jpg]]
+
+* In kaart brengen van een complex probleem
+** Stap 1: Stel een variabele lijst samen
+#+REVEAL_HTML: <div style="font-size: 45%;">
+| fysiek functioneren                 | zelfstandig wonend             | werkend                  |
+| psychische gezondheid               | regio (noord/oost, zuid, west) | informele zorg ontvangen |
+| cognitief functioneren              | gelovig                        | relatie kwaliteit        |
+| visus                               | opleidingsniveau               | huisgenoten              |
+| gehoor                              | vrouw                          | netwerkomvang            |
+| gezondheidsgerelateerde beperkingen | dagelijks netwerkcontact       | netwerkdiversiteit       |
+| ervaren regie                       | computer gebruik               | verhuisd buiten postcode |
+| chronische ziekten                  | internet gebruik               | stedelijkheid            |
+| gezondheid in het algemeen          | partner                        | burgerlijke staat        |
+| professionele zorg ontvangen        | informele zorg verlenen        | inkomen                  |
+| coping skill                        | sociale participatie           | tevredenheid van inkomen |
+| zelfbeeld                           | vrijwilligerswerk              | eenzaamheid              |
+| leeftijd                            | frequentie kerkbezoek          |                          |
+#+REVEAL_HTML: </div>
+** Stap 2: De Spatio-Temporele schaal
+[[file:~/github/blog/content/presentations/complex_loneliness/images/spatioTemporal.png]]
+** Stap 3: Breng de relaties in kaart (voorbeeld alzheimer project)
+#+attr_html: :width 1300px
+[[file:~/github/blog/content/presentations/assets/images/alzheimer_cld.png]]
+** Stap 4: Modelleer dynamiek in het systeem
+#+ATTR_REVEAL: :frag (fade-in)
+- Wiskundige formules die dynamiek over tijd berekenen
+- Moeten getrained en getoetst worden over data
+- Als alle stukjes van de puzzel samenkomen:
+  - In silico interventie toetsing
+  - Synergetische effecten evalueren
+  - etc.,
+** Bedankt voor het luisteren, zijn er vragen?
+#+attr_html: :height 400px
+[[file:~/github/blog/content/presentations/complex_loneliness/images/vragen.jpg]]

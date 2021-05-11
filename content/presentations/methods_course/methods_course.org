@@ -1,0 +1,219 @@
+#+OPTIONS: reveal_title_slide:"<h3>%t</h3><h4>%s</h4><div><small>%d</small><br><small><small>%a&nbsp;:&nbsp;%e</small></small></div>"
+#+OPTIONS: reveal_math:t
+
+#+OPTIONS: center:t, progress:t, history:nil, control:t
+#+OPTIONS: rolling_links:t, keyboard:t, overview:t num:nil
+#+OPTIONS: toc:1  slide_number:c/t
+#+OPTIONS: email:nil
+#+OPTIONS: width:800, height:600
+
+#+MACRO: color @@html:<font color=""></font>@@
+
+#+REVEAL_HEAD_PREAMBLE: <meta name="description" content="Course slides">
+#+REVEAL_POSTAMBLE: <p> Created by Bas Chatel</p>
+#+OPTIONS:
+#+REVEAL_PLUGINS: (notes markdown zoom)
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_MIN_SCALE: 0.5
+#+REVEAL_MAX_SCALE: 2.5
+#+REVEAL_MARGIN: 0.2
+#+EXCLUDE_TAGS: noexport
+#+REVEAL_EXTRA_CSS: ../assets/css/local.css
+# #+REVEAL_HLEVEL: 1
+
+#+Title: Complexity modeling
+#+Subtitle: A birds eye view of the how and the why of computational modeling
+
+
+# default, cube, page, concave, zoom, linear, fade, none
+#+REVEAL_TRANS: concave
+# default, beige, sky, night, serif, simple, moon
+#+REVEAL_THEME: simple
+
+#+Author: Bas Chatel
+#+EMAIL: bas.chatel@radboudumc.nl
+
+# Templating
+#
+# ### FRAGMENT CHANGE ###
+#
+# #+ATTR_REVEAL: :frag grow/shrink/roll-in/fade-out/highlight-red
+#
+# ### BIG PICTURE ###
+#
+# #:PROPERTIES:
+# :reveal_background: img/test.jpg
+# :reveal_background_size: 600px
+# :reveal_background_trans: slide
+# :END:
+# #+BEGIN_NOTES
+# Your note
+# #+END_NOTES
+#
+# ### CHANGE BACKGROUND ###
+#
+# :PROPERTIES:
+# :reveal_background: #123456
+# :END:
+#
+# ### 2-COLUMN SLIDE ###
+#
+# #+REVEAL_HTML: <div style="width:50%;float:left">
+# #+REVEAL_HTML:
+# #+REVEAL_HTML: <img src="images/corp.jpg" style="width: 100%">
+# #+REVEAL_HTML: </div>
+# #+REVEAL_HTML: <div style="width:50%;float: left">
+# #+REVEAL_HTML: <br><br>
+# #+REVEAL_HTML: <h2>&nbsp;&nbsp;Corporation</h2>
+# #+REVEAL_HTML: </div>
+#
+# ### CHANGE COLOR ###
+#
+# {{{color(green,emergentie)}}}
+#
+# ### Highlighted lists per item ###
+#
+# ### Make list start from different number ###
+#
+# [@4]
+#
+# CSS PART
+#
+# .reveal .slides section .fragment.appear {
+#     opacity: 1;
+#     visibility: visible;
+# }
+# .reveal .slides section .fragment.appear.visible,
+# .reveal .slides section .fragment.visible:not(.current-fragment) {
+#     color: grey;
+# }
+# .reveal .slides section .fragment.appear,
+# .reveal .slides section .fragment.current-fragment {
+#     color: #ffa200;
+# }
+#
+# HTML in <li>
+# First element
+#
+# class="fragment" data-fragment-index="0"
+#
+# THEN
+#
+# class="fragment"
+#
+# OF ALS JE ALLES IN ORG DOEN CSS PART IN EXTERNE FILE EN VOLGENDE BOVEN LIST
+# ITEMS ZETTEN
+#
+# #+ATTR_REVEAL: :frag (t fade-in fade-in)
+#+REVEAL_PREAMBLE: <div style="margin-top:10px; margin-left:10px;margin-bottom:-50px;"><img src="../assets/logos/logos.png" alt="" style="height:50px;"></div>
+
+# ########################
+# ###### Complexity ######
+# ########################
+# https://towardsdatascience.com/infectious-disease-modelling-fit-your-model-to-coronavirus-data-2568e672dbc7
+# https://towardsdatascience.com/infectious-disease-modelling-beyond-the-basic-sir-model-216369c584c4
+# https://towardsdatascience.com/infectious-disease-modelling-part-i-understanding-sir-28d60e29fdfc
+* Introduction to complexity modeling
+** What is Complexity Science?
+#+ATTR_REVEAL: :frag (fade-in)
+- Studies “the way in which large groups of individual components behave collectively by adapting to each other and the environment they create themselves”
+- Aims to model the spatio-temporal dynamics of a system to explore its inherent patterns
+- Necessary in order to explore, interpret, and manipulate dynamics of a system /in silico/
+#+BEGIN_NOTES
+  Enter speaker notes here.
+#+END_NOTES
+** Fields of application
+#+REVEAL_HTML: <div style="width:50%;float:left">
+- Mental health
+- Public health
+- Planetary health
+- Social dynamics
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: <div style="width:50%;float: left">
+- Depression
+- Obesity epidemic
+- Climate change
+- Immune system
+#+REVEAL_HTML: </div>
+** Step 1: Conceptual modeling
+#+ATTR_REVEAL: :frag (fade-in)
+- Explicitly state:
+  - Causal hypotheses
+  - Knowledge
+  - Assumptions
+- Reason about:
+  - Cause- and- effect
+** Step 2: Computational modeling
+#+BEGIN_QUOTE
+*All models are wrong, but some are useful*. - George Box
+#+END_QUOTE
+#+BEGIN_NOTES
+  Vraag hier aan de groep: Why or when do we use computational models or simulations of things?
+#+END_NOTES
+** Why/when do we model?
+#+REVEAL_HTML: <div style="width:50%;float:left">
+- Explore dynamics
+- Manipulate the system itself
+- Interpret resulting dynamics
+#+REVEAL_HTML: </div>
+#+REVEAL_HTML: <div style="width:50%;float: left">
+- Reduce cost
+- Ask "what if" questions
+- Ethics
+#+REVEAL_HTML: </div>
+** Why/when do we model?
+Human brains are generally not reliable in predicting the long-term effects of interconnectedness, feedback loops, and nonlinearities
+#+attr_html: :width 700px
+[[file:~/github/blog/content/presentations/assets/images/alzheimer_cld.png]]
+** Problems in biopsychosocial domains
+#+ATTR_REVEAL: :frag (fade-in)
+- Infeasibility of experimental research
+- Difficulty to obtain rich data
+- Rapid changes in underlying system
+- Relevant variables on many spatial and temporal scales
+- Unclear system boundaries
+** Step 3: Gaining confidence in your model
+- Test the model with data
+- Quantify uncertainty
+** The scientific cycle
+#+attr_html: :width 700px
+[[file:~/github/blog/content/presentations/methods_paper/images/image5.png]]
+** A CLD about modeling with CLDs
+#+attr_html: :width 700px
+[[file:~/github/blog/content/presentations/methods_paper/images/image15.png]]
+* Different types of models
+** Agent-based
+:PROPERTIES:
+:ID:       9F9DDC3C-B123-4903-A189-580E7F392EAA
+:END:
+*Rule based models, often with spatial component:*
+1. [[http://www.netlogoweb.org/launch#http://ccl.northwestern.edu/netlogo/models/models/Curricular Models/epiDEM/epiDEM Basic.nlogo][Basic model]]
+2. [[http://www.netlogoweb.org/launch#http://ccl.northwestern.edu/netlogo/models/models/Curricular Models/epiDEM/epiDEM Travel and Control.nlogo][Travel, ambulance, hospital, isolation model]]
+** Systems of Ordinary Differential Equations
+* Uncertainty
+** The stuff that we're not certain about
+#+ATTR_REVEAL: :frag (fade-in)
+- Types of uncertainty:
+  - Topology
+  - Equations (Parameter values)
+  - Measuring methods
+  - Etc.,
+- *If ignored*:
+  - Creates bias
+  - Overstates predictive power
+  - Possibly leading to wrong conclusions
+** Honesty and transparency
+#+ATTR_REVEAL: :frag (fade-in)
+- Write down the things you know
+  - But also the things you don't know!
+- Make your assumptions clear
+- Be realistic about the applicability of your model
+  - Model context matters!
+** It's all about confidence
+- To increase confidence is to reduce uncertainty
+  #+ATTR_REVEAL: :frag (fade-in)
+  - Confidence in model topology
+  - Confidence in model predictions
+  - Confidence in model Validity
+** Questions?
+Any uncertainties you'd want to share?
